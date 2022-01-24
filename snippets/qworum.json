@@ -1,0 +1,148 @@
+{
+  "Qworum message scaffold": {
+    "prefix": ["script", "scaffold"],
+    "body": [
+      "<!--",
+      "\tA Qworum script.",
+      "-->\n",
+      "<sequence xmlns='https://qworum.com/ns/2.0/statement/' xmlns:d='https://qworum.com/ns/2.0/data/'>",
+      "\t${1:<!-- statements -->}",
+      "</sequence>\n"
+    ],
+    "description": "Scaffold for a message."
+  },
+
+  "<sequence>": {
+    "prefix": ["sequence"],
+    "body": [
+      "<sequence>",
+      "\t${1:<!-- statements -->}",
+      "</sequence>\n"
+    ],
+    "description": "A sequence of statements."
+  },
+
+  "<call>": {
+    "prefix": ["call"],
+    "body": [
+      "<call object='[\"${1:this}\"]' href='$2'>",
+      "\t${3:<!-- q:params? -->}",
+      "\t${4:<!-- q:object-params? -->}",
+      "</call>\n"
+    ],
+    "description": "A method call."
+  },
+
+  "<goto>": {
+    "prefix": ["goto"],
+    "body": [
+      "<goto href='${1:path of next phase}'>",
+      "\t${2:<!-- q:params? -->}",
+      "</goto>\n"
+    ],
+    "description": "Go to the next phase of the current method call."
+  },
+
+  "<parameters>": {
+    "prefix": ["parameters"],
+    "body": [
+      "<parameters>",
+      "\t<parameter name='$1'>",
+      "\t\t${2:<!-- parameter value -->}",
+      "\t</parameter>",
+      "\t${3:<!-- another parameter? -->}",
+      "</parameters>\n"
+    ],
+    "description": "Parameters for a <goto> or <call>."
+  },
+
+  "<param>": {
+    "prefix": ["parameter"],
+    "body": [
+      "<parameter name='$1'>",
+      "\t${2:<!-- parameter value -->}",
+      "</parameter>"
+    ],
+    "description": "Parameter for a <goto> or <call>."
+  },
+
+  "<fault>": {
+    "prefix": ["fault"],
+    "body": [
+      "<fault type='${1:* }' />"
+    ],
+    "description": "A fault."
+  },
+
+  "<try>": {
+    "prefix": ["try"],
+    "body": [
+      "<try>",
+      "\t${1:<!-- a statement -->}",
+      "\t<catch faults='[\"${2}\"]'>",
+      "\t\t${3:<!-- statements -->}",
+      "\t</catch>",
+      "</try>"
+    ],
+    "description": "Handler for a raised runtime fault."
+  },
+
+  "<catch>": {
+    "prefix": ["catch"],
+    "body": [
+      "<catch faults='[\"${1}\"]'>",
+      "\t${2:<!-- statements -->}",
+      "</catch>"
+    ],
+    "description": "Handle an additional fault type."
+  },
+
+  "<return>": {
+    "prefix": ["return"],
+    "body": [
+      "<return>",
+      "\t${1:<!-- a statement -->}",
+      "</return>"
+    ],
+    "description": "Return a value."
+  },
+
+  "<variable> write": {
+    "prefix": ["variable write"],
+    "body": [
+      "<variable name='$1'>",
+      "\t${2:<!-- a statement -->}",
+      "</variable>"
+    ],
+    "description": "Read the value of a variable after having set its value."
+  },
+
+  "<variable> read": {
+    "prefix": ["variable read"],
+    "body": [
+      "<variable name='$1' />"
+    ],
+    "description": "Read the value of a variable."
+  },
+
+  "<d:json>": {
+    "prefix": ["json"],
+    "body": [
+      "<d:json>${1:0}</d:json>"
+    ],
+    "description": "An json value."
+  },
+
+  "<d:linked-data>": {
+    "prefix": ["linked-data"],
+    "body": [
+      "<d:linked-data>\n\t<![CDATA[\n\t\t# RDF statements in Turtle format.\n\n\t\t@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n\t\t@prefix schema: <https://schema.org/> .\n\t\t@prefix : <#> .\n\n\t\t:result ${1:property} ${2:object} .\n\n\t\t# Result example:\n\t\t# :result\n\t\t# \ta schema:Organization;\n\t\t# \tschema:name \"The World Wide Web Consortium\"@en;\n\t\t# \trdfs:isDefinedBy <https://dbpedia.org/resource/World_Wide_Web_Consortium> .\n\t]]>\n</d:linked-data>"
+    ],
+    "description": "A linked-data value."
+  }
+
+
+
+
+
+}

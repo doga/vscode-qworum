@@ -1,0 +1,61 @@
+{
+  "name": "qworum",
+	"displayName": "Qworum — UI for microservices",
+	"description": "Qworum language support.",
+	"version": "2.0.0",
+	"engines": {
+		"vscode": "^1.62.0"
+	},
+	"categories": [
+		"Programming Languages", "Snippets", "Other"
+	],
+	"activationEvents": [
+        "onCommand:qworum.showVersion",
+				"onLanguage:xml"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "qworum.showVersion",
+				"title": "Show Qworum version"
+			}
+		],
+		"languages": [{
+			"id": "qworum",
+			"extensions": [".qrm.xml", ".qworum.xml", ".qrm", ".qworum"],
+			"aliases": ["Qworum", "qrm", "QRM", "Qrm"],
+			"configuration": "./qworum.language-configuration.json"
+		}],
+    "grammars": [{
+			"language": "qworum",
+			"scopeName": "text.qworum",
+			"path": "./syntaxes/qworum.tmLanguage.json"
+    }],
+    "snippets": [{
+			"language": "qworum",
+			"path": "./snippets/qworum.json"
+		}]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.62.0",
+		"@types/glob": "^7.1.4",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@typescript-eslint/eslint-plugin": "^5.1.0",
+		"@typescript-eslint/parser": "^5.1.0",
+		"eslint": "^8.1.0",
+		"glob": "^7.1.7",
+		"mocha": "^9.1.3",
+		"typescript": "^4.4.4",
+		"@vscode/test-electron": "^1.6.2"
+	}
+}
