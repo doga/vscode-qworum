@@ -5,7 +5,7 @@
       "<!--",
       "\tA Qworum script.",
       "-->\n",
-      "<sequence xmlns='https://qworum.com/ns/2.0/statement/' xmlns:d='https://qworum.com/ns/2.0/data/'>",
+      "<sequence xmlns='https://qworum.com/ns/2.0/statement/' xmlns:data='https://qworum.com/ns/2.0/data/'>",
       "\t${1:<!-- statements -->}",
       "</sequence>\n"
     ],
@@ -26,8 +26,8 @@
     "prefix": ["call"],
     "body": [
       "<call object='[\"${1:this}\"]' href='$2'>",
-      "\t${3:<!-- q:params? -->}",
-      "\t${4:<!-- q:object-params? -->}",
+      "\t${3:<!-- params? -->}",
+      "\t${4:<!-- object-params? -->}",
       "</call>\n"
     ],
     "description": "A method call."
@@ -37,7 +37,7 @@
     "prefix": ["goto"],
     "body": [
       "<goto href='${1:path of next phase}'>",
-      "\t${2:<!-- q:params? -->}",
+      "\t${2:<!-- params? -->}",
       "</goto>\n"
     ],
     "description": "Go to the next phase of the current method call."
@@ -125,18 +125,18 @@
     "description": "Read the value of a variable."
   },
 
-  "<d:json>": {
+  "<data:json>": {
     "prefix": ["json"],
     "body": [
-      "<d:json>${1:0}</d:json>"
+      "<data:json>${1:0}</data:json>"
     ],
     "description": "An json value."
   },
 
-  "<d:linked-data>": {
+  "<data:linked-data>": {
     "prefix": ["linked-data"],
     "body": [
-      "<d:linked-data>\n\t<![CDATA[\n\t\t# RDF statements in Turtle format.\n\n\t\t@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n\t\t@prefix schema: <https://schema.org/> .\n\t\t@prefix : <#> .\n\n\t\t:result ${1:property} ${2:object} .\n\n\t\t# Result example:\n\t\t# :result\n\t\t# \ta schema:Organization;\n\t\t# \tschema:name \"The World Wide Web Consortium\"@en;\n\t\t# \trdfs:isDefinedBy <https://dbpedia.org/resource/World_Wide_Web_Consortium> .\n\t]]>\n</d:linked-data>"
+      "<data:linked-data>\n\t<![CDATA[\n\t\t# RDF statements in Turtle format.\n\n\t\t@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n\t\t@prefix schema: <https://schema.org/> .\n\t\t@prefix : <#> .\n\n\t\t:result ${1:property} ${2:object} .\n\n\t\t# Result example:\n\t\t# :result\n\t\t# \ta schema:Organization;\n\t\t# \tschema:name \"The World Wide Web Consortium\"@en;\n\t\t# \trdfs:isDefinedBy <https://dbpedia.org/resource/World_Wide_Web_Consortium> .\n\t]]>\n</data:linked-data>"
     ],
     "description": "A linked-data value."
   }

@@ -1,7 +1,7 @@
 {
   "name": "qworum",
-	"displayName": "Qworum — UI for microservices",
-	"description": "Qworum language support.",
+	"displayName": "Qworum — The Service Web",
+	"description": "Language support for Qworum scripts.",
 	"version": "2.0.0",
 	"engines": {
 		"vscode": "^1.62.0"
@@ -24,7 +24,7 @@
 		"languages": [{
 			"id": "qworum",
 			"extensions": [".qrm.xml", ".qworum.xml", ".qrm", ".qworum"],
-			"aliases": ["Qworum", "qrm", "QRM", "Qrm"],
+			"aliases": ["Qworum script", "qrm", "QRM", "Qrm"],
 			"configuration": "./qworum.language-configuration.json"
 		}],
     "grammars": [{
