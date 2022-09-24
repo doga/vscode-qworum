@@ -8,7 +8,7 @@ export function activate(context: vscode.ExtensionContext) {
 	
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "qworum" is now active!');
+	console.log('The Qworum VS Code extension is now active!');
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('qworum.showVersion', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Qworum 2.0.0');
+		vscode.window.showInformationMessage('Qworum v1.0.0');
 	});
 
 	context.subscriptions.push(disposable);

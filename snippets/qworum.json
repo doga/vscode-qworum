@@ -1,148 +1,188 @@
 {
   "Qworum message scaffold": {
-    "prefix": ["script", "scaffold"],
+    "prefix": ["<", "script"],
     "body": [
-      "<!--",
-      "\tA Qworum script.",
-      "-->\n",
-      "<sequence xmlns='https://qworum.com/ns/2.0/statement/' xmlns:data='https://qworum.com/ns/2.0/data/'>",
-      "\t${1:<!-- statements -->}",
+      "<sequence xmlns='https://qworum.net/ns/v1/instruction/' xmlns:data='https://qworum.net/ns/v1/data/'>",
+      "\t$1",
       "</sequence>\n"
     ],
-    "description": "Scaffold for a message."
+    "description": "Root of Qworum script."
   },
 
   "<sequence>": {
-    "prefix": ["sequence"],
+    "prefix": ["<sequence>"],
     "body": [
       "<sequence>",
-      "\t${1:<!-- statements -->}",
-      "</sequence>\n"
+      "\t$1",
+      "</sequence>"
     ],
-    "description": "A sequence of statements."
+    "description": "Sequence of statements."
   },
 
-  "<call>": {
-    "prefix": ["call"],
+  "<call> with parameters": {
+    "prefix": ["<call>"],
     "body": [
-      "<call object='[\"${1:this}\"]' href='$2'>",
-      "\t${3:<!-- params? -->}",
-      "\t${4:<!-- object-params? -->}",
-      "</call>\n"
+      "<call object='[${1:\"@\"}]' href='$2'>",
+      "\t$3",
+      "</call>"
     ],
-    "description": "A method call."
+    "description": "First call phase."
   },
 
-  "<goto>": {
-    "prefix": ["goto"],
+  "<call> without parameters": {
+    "prefix": ["<call>"],
     "body": [
-      "<goto href='${1:path of next phase}'>",
-      "\t${2:<!-- params? -->}",
-      "</goto>\n"
+      "<call object='[${1:\"@\"}]' href='$2' />"
     ],
-    "description": "Go to the next phase of the current method call."
+    "description": "First call phase."
+  },
+
+  "<goto> with parameters": {
+    "prefix": ["<goto>"],
+    "body": [
+      "<goto href='$1'>",
+      "\t$2",
+      "</goto>"
+    ],
+    "description": "Next call phase."
+  },
+
+  "<goto> without parameters": {
+    "prefix": ["<goto>"],
+    "body": [
+      "<goto href='$1' />"
+    ],
+    "description": "Next call phase."
   },
 
   "<parameters>": {
-    "prefix": ["parameters"],
+    "prefix": ["<parameters>"],
     "body": [
       "<parameters>",
       "\t<parameter name='$1'>",
-      "\t\t${2:<!-- parameter value -->}",
+      "\t\t$2",
       "\t</parameter>",
-      "\t${3:<!-- another parameter? -->}",
-      "</parameters>\n"
+      "</parameters>"
     ],
-    "description": "Parameters for a <goto> or <call>."
+    "description": "Data parameters for phase."
   },
 
-  "<param>": {
-    "prefix": ["parameter"],
+  "<parameter>": {
+    "prefix": ["<parameter>"],
     "body": [
       "<parameter name='$1'>",
-      "\t${2:<!-- parameter value -->}",
+      "\t$2",
       "</parameter>"
     ],
-    "description": "Parameter for a <goto> or <call>."
+    "description": "Data parameter for phase."
+  },
+
+  "<object-parameters>": {
+    "prefix": ["<object-parameters>"],
+    "body": [
+      "<object-parameters>",
+      "\t<object-parameter name='$1'>",
+      "\t\t$2",
+      "\t</object-parameter>",
+      "</object-parameters>"
+    ],
+    "description": "Object parameters for phase."
+  },
+
+  "<object-parameter>": {
+    "prefix": ["<object-parameter>"],
+    "body": [
+      "<object-parameter name='$1'>",
+      "\t$2",
+      "</object-parameter>"
+    ],
+    "description": "Object parameter for phase."
   },
 
   "<fault>": {
-    "prefix": ["fault"],
+    "prefix": ["<fault>"],
     "body": [
       "<fault type='${1:* }' />"
     ],
-    "description": "A fault."
+    "description": "Fault."
   },
 
   "<try>": {
-    "prefix": ["try"],
+    "prefix": ["<try>"],
     "body": [
       "<try>",
-      "\t${1:<!-- a statement -->}",
+      "\t$1",
       "\t<catch faults='[\"${2}\"]'>",
-      "\t\t${3:<!-- statements -->}",
+      "\t\t$3",
       "\t</catch>",
       "</try>"
     ],
-    "description": "Handler for a raised runtime fault."
+    "description": "Handle faults."
   },
 
   "<catch>": {
-    "prefix": ["catch"],
+    "prefix": ["<catch>"],
     "body": [
       "<catch faults='[\"${1}\"]'>",
-      "\t${2:<!-- statements -->}",
+      "\t$2",
       "</catch>"
     ],
-    "description": "Handle an additional fault type."
+    "description": "Catch faults."
   },
 
   "<return>": {
-    "prefix": ["return"],
+    "prefix": ["<return>"],
     "body": [
       "<return>",
-      "\t${1:<!-- a statement -->}",
+      "\t$1",
       "</return>"
     ],
     "description": "Return a value."
   },
 
-  "<variable> write": {
-    "prefix": ["variable write"],
+  "<data> write": {
+    "prefix": ["<data>"],
     "body": [
-      "<variable name='$1'>",
+      "<data name='$1'>",
       "\t${2:<!-- a statement -->}",
-      "</variable>"
+      "</data>"
     ],
-    "description": "Read the value of a variable after having set its value."
+    "description": "Write data."
   },
 
-  "<variable> read": {
-    "prefix": ["variable read"],
+  "<data> read": {
+    "prefix": ["<data>"],
     "body": [
-      "<variable name='$1' />"
+      "<data name='$1' />"
     ],
-    "description": "Read the value of a variable."
+    "description": "Read data."
   },
 
   "<data:json>": {
-    "prefix": ["json"],
+    "prefix": ["<json>"],
     "body": [
-      "<data:json>${1:0}</data:json>"
+      "<data:json>",
+      "\t{",
+      "\t\t\"${1:name}\": ${2:\"value\"}",
+      "\t}",
+      "</data:json>"
     ],
-    "description": "An json value."
+    "description": "JSON value."
   },
 
-  "<data:linked-data>": {
-    "prefix": ["linked-data"],
+  "<data:semantic>": {
+    "prefix": ["<semantic>"],
     "body": [
-      "<data:linked-data>\n\t<![CDATA[\n\t\t# RDF statements in Turtle format.\n\n\t\t@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n\t\t@prefix schema: <https://schema.org/> .\n\t\t@prefix : <#> .\n\n\t\t:result ${1:property} ${2:object} .\n\n\t\t# Result example:\n\t\t# :result\n\t\t# \ta schema:Organization;\n\t\t# \tschema:name \"The World Wide Web Consortium\"@en;\n\t\t# \trdfs:isDefinedBy <https://dbpedia.org/resource/World_Wide_Web_Consortium> .\n\t]]>\n</data:linked-data>"
+      "<data:semantic>",
+      "\t{",
+      "\t\t\"@context\" : ${1:\"https://schema.org\"},",
+      "\t\t\"@type\"    : \"${2:Person}\",",
+      "\t\t\"@id\"      : \"${3:https://www.wikidata.org/wiki/Q92760}\",",
+      "\t\t\"${4:givenName}\": ${5:\"Claude\"}",
+      "\t}",
+      "</data:semantic>"
     ],
-    "description": "A linked-data value."
+    "description": "JSON-LD value."
   }
-
-
-
-
 
 }

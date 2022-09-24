@@ -2,7 +2,11 @@
   "name": "qworum",
 	"displayName": "Qworum — The Service Web",
 	"description": "Language support for Qworum scripts.",
-	"version": "2.0.0",
+	"version": "1.0.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/doga/vscode-qworum.git"
+	},
 	"engines": {
 		"vscode": "^1.62.0"
 	},
@@ -18,12 +22,12 @@
 		"commands": [
 			{
 				"command": "qworum.showVersion",
-				"title": "Show Qworum version"
+				"title": "Qworum: Show info"
 			}
 		],
 		"languages": [{
 			"id": "qworum",
-			"extensions": [".qrm.xml", ".qworum.xml", ".qrm", ".qworum"],
+			"extensions": [".qrm.xml"],
 			"aliases": ["Qworum script", "qrm", "QRM", "Qrm"],
 			"configuration": "./qworum.language-configuration.json"
 		}],
