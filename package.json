@@ -1,12 +1,14 @@
 {
   "name": "qworum",
 	"displayName": "Qworum — The Service Web",
-	"description": "Language support for Qworum scripts.",
+	"description": "Qworum script snippets.",
 	"version": "1.0.0",
+	"publisher": "qworum",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/doga/vscode-qworum.git"
 	},
+	"license": "MIT",
 	"icon": "images/Qworum-logo-alpha-256x256.png",
 	"engines": {
 		"vscode": "^1.62.0"
