@@ -19,7 +19,7 @@
     "description": "Sequence of statements."
   },
 
-  "<call> with parameters": {
+  "<call> with arguments": {
     "prefix": ["<call>"],
     "body": [
       "<call object='[${1:\"@\"}]' href='$2'>",
@@ -29,7 +29,7 @@
     "description": "First call phase."
   },
 
-  "<call> without parameters": {
+  "<call> without arguments": {
     "prefix": ["<call>"],
     "body": [
       "<call object='[${1:\"@\"}]' href='$2' />"
@@ -37,7 +37,7 @@
     "description": "First call phase."
   },
 
-  "<goto> with parameters": {
+  "<goto> with arguments": {
     "prefix": ["<goto>"],
     "body": [
       "<goto href='$1'>",
@@ -47,7 +47,7 @@
     "description": "Next call phase."
   },
 
-  "<goto> without parameters": {
+  "<goto> without arguments": {
     "prefix": ["<goto>"],
     "body": [
       "<goto href='$1' />"
@@ -55,48 +55,44 @@
     "description": "Next call phase."
   },
 
-  "<parameters>": {
-    "prefix": ["<parameters>"],
+  "<data-args>": {
+    "prefix": ["<data-args>"],
     "body": [
-      "<parameters>",
-      "\t<parameter name='$1'>",
+      "<data-args>",
+      "\t<data-arg name='$1'>",
       "\t\t$2",
-      "\t</parameter>",
-      "</parameters>"
+      "\t</data-arg>$3",
+      "</data-args>"
     ],
-    "description": "Data parameters for phase."
+    "description": "Data arguments for phase."
   },
 
-  "<parameter>": {
-    "prefix": ["<parameter>"],
+  "<data-arg>": {
+    "prefix": ["<data-arg>"],
     "body": [
-      "<parameter name='$1'>",
+      "<data-arg name='$1'>",
       "\t$2",
-      "</parameter>"
+      "</data-arg>"
     ],
-    "description": "Data parameter for phase."
+    "description": "Data argument for phase."
   },
 
-  "<object-parameters>": {
-    "prefix": ["<object-parameters>"],
+  "<object-args>": {
+    "prefix": ["<object-args>"],
     "body": [
-      "<object-parameters>",
-      "\t<object-parameter name='$1'>",
-      "\t\t$2",
-      "\t</object-parameter>",
-      "</object-parameters>"
+      "<object-args>",
+      "\t<object-arg name='$1' object='[${2:\"@\"}]' />$3",
+      "</object-args>"
     ],
-    "description": "Object parameters for phase."
+    "description": "Object arguments for phase."
   },
 
-  "<object-parameter>": {
-    "prefix": ["<object-parameter>"],
+  "<object-arg>": {
+    "prefix": ["<object-arg>"],
     "body": [
-      "<object-parameter name='$1'>",
-      "\t$2",
-      "</object-parameter>"
+      "<object-arg name='$1' object='[${2:\"@\"}]' />"
     ],
-    "description": "Object parameter for phase."
+    "description": "Object argument for phase."
   },
 
   "<fault>": {
@@ -144,7 +140,7 @@
     "prefix": ["<data>"],
     "body": [
       "<data name='$1'>",
-      "\t${2:<!-- a statement -->}",
+      "\t$2",
       "</data>"
     ],
     "description": "Write data."
