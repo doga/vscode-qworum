@@ -37,17 +37,7 @@
     "description": "First call phase."
   },
 
-  "<goto> with arguments": {
-    "prefix": ["<goto>"],
-    "body": [
-      "<goto href='$1'>",
-      "\t$2",
-      "</goto>"
-    ],
-    "description": "Next call phase."
-  },
-
-  "<goto> without arguments": {
+  "<goto>": {
     "prefix": ["<goto>"],
     "body": [
       "<goto href='$1' />"
