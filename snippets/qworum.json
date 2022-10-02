@@ -1,100 +1,101 @@
 {
-  "Qworum message scaffold": {
+  "Qworum script": {
     "prefix": ["<", "script"],
+    "description": "Root of Qworum script.",
     "body": [
       "<sequence xmlns='https://qworum.net/ns/v1/instruction/' xmlns:data='https://qworum.net/ns/v1/data/'>",
       "\t$1",
       "</sequence>\n"
-    ],
-    "description": "Root of Qworum script."
+    ]
   },
 
-  "<sequence>": {
+  "Sequence of statements": {
     "prefix": ["<sequence>"],
+    "description": "Sequence of statements.",
     "body": [
       "<sequence>",
       "\t$1",
       "</sequence>"
-    ],
-    "description": "Sequence of statements."
+    ]
   },
 
-  "<call> with arguments": {
+  "Call with arguments": {
     "prefix": ["<call>"],
+    "description": "First call phase.",
     "body": [
       "<call object='[${1:\"@\"}]' href='$2'>",
       "\t$3",
       "</call>"
-    ],
-    "description": "First call phase."
+    ]
   },
 
-  "<call> without arguments": {
+  "Call without arguments": {
     "prefix": ["<call>"],
+    "description": "First call phase.",
     "body": [
       "<call object='[${1:\"@\"}]' href='$2' />"
-    ],
-    "description": "First call phase."
+    ]
   },
 
-  "<goto>": {
+  "Next phase in current call": {
     "prefix": ["<goto>"],
+    "description": "Next call phase.",
     "body": [
       "<goto href='$1' />"
-    ],
-    "description": "Next call phase."
+    ]
   },
 
-  "<data-args>": {
+  "Data arguments for call": {
     "prefix": ["<data-args>"],
+    "description": "Data arguments for phase.",
     "body": [
       "<data-args>",
       "\t<data-arg name='$1'>",
       "\t\t$2",
       "\t</data-arg>$3",
       "</data-args>"
-    ],
-    "description": "Data arguments for phase."
+    ]
   },
 
-  "<data-arg>": {
+  "Data argument for call": {
     "prefix": ["<data-arg>"],
+    "description": "Data argument for phase.",
     "body": [
       "<data-arg name='$1'>",
       "\t$2",
       "</data-arg>"
-    ],
-    "description": "Data argument for phase."
+    ]
   },
 
-  "<object-args>": {
+  "Object arguments for call": {
     "prefix": ["<object-args>"],
+    "description": "Object arguments for phase.",
     "body": [
       "<object-args>",
       "\t<object-arg name='$1' object='[${2:\"@\"}]' />$3",
       "</object-args>"
-    ],
-    "description": "Object arguments for phase."
+    ]
   },
 
-  "<object-arg>": {
+  "Object argument for call": {
     "prefix": ["<object-arg>"],
+    "description": "Object argument for phase.",
     "body": [
       "<object-arg name='$1' object='[${2:\"@\"}]' />"
-    ],
-    "description": "Object argument for phase."
+    ]
   },
 
-  "<fault>": {
+  "Fault": {
     "prefix": ["<fault>"],
+    "description": "Fault.",
     "body": [
       "<fault type='${1:* }' />"
-    ],
-    "description": "Fault."
+    ]
   },
 
-  "<try>": {
+  "Handle faults": {
     "prefix": ["<try>"],
+    "description": "Handle faults.",
     "body": [
       "<try>",
       "\t$1",
@@ -102,49 +103,48 @@
       "\t\t$3",
       "\t</catch>",
       "</try>"
-    ],
-    "description": "Handle faults."
+    ]
   },
 
-  "<catch>": {
+  "Catch faults": {
     "prefix": ["<catch>"],
+    "description": "Catch faults.",
     "body": [
       "<catch faults='[\"${1}\"]'>",
       "\t$2",
       "</catch>"
-    ],
-    "description": "Catch faults."
+    ]
   },
 
-  "<return>": {
+  "Return from current call": {
     "prefix": ["<return>"],
+    "description": "Return from current call.",
     "body": [
       "<return>",
       "\t$1",
       "</return>"
-    ],
-    "description": "Return a value."
+    ]
   },
 
-  "<data> write": {
+  "Write data": {
     "prefix": ["<data>"],
     "body": [
-      "<data name='$1'>",
+      "<data name='[\"$1\"]'>",
       "\t$2",
       "</data>"
     ],
     "description": "Write data."
   },
 
-  "<data> read": {
+  "Read data": {
     "prefix": ["<data>"],
     "body": [
-      "<data name='$1' />"
+      "<data name='[\"$1\"]' />"
     ],
     "description": "Read data."
   },
 
-  "<data:json>": {
+  "JSON": {
     "prefix": ["<json>"],
     "body": [
       "<data:json>",
@@ -156,19 +156,30 @@
     "description": "JSON value."
   },
 
-  "<data:semantic>": {
-    "prefix": ["<semantic>"],
+  "JSON-LD": {
+    "prefix": ["<semantic type='json-ld'>"],
     "body": [
       "<data:semantic>",
       "\t{",
-      "\t\t\"@context\" : ${1:\"https://schema.org\"},",
+      "\t\t\"@context\" : {\"@vocab\": \"${1:\"https://schema.org/\"}},",
       "\t\t\"@type\"    : \"${2:Person}\",",
-      "\t\t\"@id\"      : \"${3:https://www.wikidata.org/wiki/Q92760}\",",
-      "\t\t\"${4:givenName}\": ${5:\"Claude\"}",
+      "\t\t\"${3:name}\"     : ${4:\"value\"}",
       "\t}",
       "</data:semantic>"
     ],
     "description": "JSON-LD value."
+  },
+
+  "N-Quads": {
+    "prefix": ["<semantic type='n-quads'>"],
+    "body": [
+      "<data:semantic type='n-quads'>",
+      "\t<![CDATA[",
+      "\t\t${1:subject} ${2:predicate} ${3:object} .",
+      "\t]]>",
+      "</data:semantic>"
+    ],
+    "description": "N-Quads value."
   }
 
 }
