@@ -2,7 +2,7 @@
   "name": "qworum",
 	"displayName": "Qworum — The Service Web",
 	"description": "Qworum script snippets.",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"publisher": "qworum",
 	"repository": {
 		"type": "git",

@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('qworum.showVersion', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Qworum v1.0.0');
+		vscode.window.showInformationMessage('Qworum v1.0.5');
 	});
 
 	context.subscriptions.push(disposable);

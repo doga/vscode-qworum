@@ -1,34 +1,19 @@
 # Qworum for Visual Studio Code
 
-Code snippets to easily generate [Qworum](https://qworum.net) scripts in XML format.
+Code snippets for [Qworum](https://qworum.net) scripts.
 
-## Features
+## How it works
 
-This Visual Studio Code extension:
+This Visual Studio Code extension provides code snippets for all instructions and data types that are defined in the [Qworum specification](https://qworum.net/en/specification/v1/).
 
-- supports all instructions and data types that are defined in the [Qworum specification](https://qworum.net/en/specification/v1/).
-- is only activated for files that have the `.qrm.xml` file name extension.
+![Demo](./images/Qworum-VSCode-extension-demo-819x411.png)
 
-![Demo](./images/Qworum-VSCode-extension-demo-904x581.png)
+## Setup
 
-## Requirements
+After installing this VS Code extension, associate the `.qrm.xml` file extension with the Qworum script language.
 
-None.
+To do so, go to `Preferences > Settings` and add the following key-value pair to `files.associations`:
 
-## Extension Settings
+![Demo](./images/Qworum-VSCode-settings.png)
 
-None.
-
-## Known Issues
-
-None.
-
-## Release Notes
-
-### 1.0.1
-
-Update the Qworum vocabulary.
-
-### 1.0.0
-
-Initial release of Qworum for VS Code.
+∎
