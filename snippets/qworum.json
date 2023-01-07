@@ -129,7 +129,7 @@
   "Write data": {
     "prefix": ["<data>"],
     "body": [
-      "<data name='[\"$1\"]'>",
+      "<data path='[\"$1\"]'>",
       "\t$2",
       "</data>"
     ],
@@ -139,7 +139,7 @@
   "Read data": {
     "prefix": ["<data>"],
     "body": [
-      "<data name='[\"$1\"]' />"
+      "<data path='[\"$1\"]' />"
     ],
     "description": "Read data."
   },
